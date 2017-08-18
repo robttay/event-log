@@ -15,44 +15,40 @@ public class EventLogTest {
 
         @Before
         public void setUp() throws Exception {
-            System.out.println("\n - Preparing for EventLog Test -");
+            System.out.println("\n - Starting EventLog Test -");
         }
 
         @After
         public void tearDown() throws Exception {
-            System.out.println("Ending Test\n");
+            System.out.println(" - Ending Test - \n");
         }
 
         @Rule
         public ExpectedException thrown = ExpectedException.none();
 
         @Test
-        public void nullEventTest() throws IllegalArgumentException {
-            System.out.println("Attempting to add null event...");
-            thrown.expect(IllegalArgumentException.class);
-            testEventLog.addEvent(testEvent);
-        }
-
-        @Test
-        public void bothEventVariablesNullTest() throws IllegalArgumentException {
-            System.out.println("Attempting to add event with two null variables...");
+        public void nullNameEventTest() throws IllegalArgumentException {
+            System.out.println("Attempting to add null name event... ");
             testEvent = new Event();
+            testEvent.setName(null);
+            testEvent.setAction("Face2Face");
             thrown.expect(IllegalArgumentException.class);
             testEventLog.addEvent(testEvent);
         }
 
         @Test
-        public void oneEventVariableNullTest() throws IllegalArgumentException {
-            System.out.println("Attempting to add event with one null variable...");
+        public void allNullEventTest() throws IllegalArgumentException {
+            System.out.println("Attempting to add null name & action event... ");
             testEvent = new Event();
-            testEvent.setName("some test event name");
+            testEvent.setName(null);
+            testEvent.setAction(null);
             thrown.expect(IllegalArgumentException.class);
             testEventLog.addEvent(testEvent);
         }
 
         @Test
-        public void invalidActionVariableTest() throws IllegalArgumentException {
-            System.out.println("Attempting to add event with invalid action variable...");
+        public void invalidActionEventTest() throws IllegalArgumentException {
+            System.out.println("Attempting to add invalid action event... ");
             testEvent = new Event();
             testEvent.setName("Text");
             testEvent.setAction("invalid action");
@@ -61,10 +57,10 @@ public class EventLogTest {
         }
 
         @Test
-        public void validEventAddedToEventListTest() throws IllegalArgumentException {
-            System.out.println("Attempting to add valid event to event list...");
+        public void validEventListTest() throws IllegalArgumentException {
+            System.out.println("Attempting to add valid event to List... ");
             testEvent = new Event();
-            testEvent.setName("some test event name");
+            testEvent.setName("event name");
             testEvent.setAction("TextMessaging");
             assertTrue("Should return true", testEventLog.addEvent(testEvent));
             assertTrue("Should have been added to event list", testEventLog.getNumEvents() == 1);

@@ -22,15 +22,9 @@ public class Event {
 
     @Override
     public String toString() {
-        return "Event --- \n" +
-                "-- -- --\n" +
-                "Name: " + name + "'\n" +
+        return "\nName: " + name + "'\n" +
                 "Action: " + action + "\n";
     }
-
-
-
-
 
 
 }
