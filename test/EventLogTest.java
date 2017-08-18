@@ -15,7 +15,7 @@ public class EventLogTest {
 
         @Before
         public void setUp() throws Exception {
-            System.out.println("Getting Ready For EventLog Test");
+            System.out.println("\n - Preparing for EventLog Test -");
         }
 
         @After

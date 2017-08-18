@@ -22,7 +22,7 @@ public class EventLog {
                 event.getAction().equals("PhoneCall") ||
                 event.getAction().equals("TextMessaging") ||
                 event.getAction().equals("Unknown")) {
-            System.out.printf("Event Added:\n" + event);
+            System.out.printf("Event Added: " + event);
             eventList.add(event);
             return true;
         } else
